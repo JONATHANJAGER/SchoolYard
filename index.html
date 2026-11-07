@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#111324" />
+  <meta name="description" content="Cyber Course — nine-month cybersecurity academy with 144 learning sessions, labs, graded quizzes, seven connected required projects including MASS private communications and progress backup." />
+  <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg" />
+  <link rel="manifest" href="./manifest.webmanifest" />
+  <link rel="stylesheet" href="./styles.css" />
+  <link rel="stylesheet" href="./layout-v4.css" />
+  <link rel="stylesheet" href="./lab-upgrade.css" />
+  <title>Cyber Course · Nine-Month Security Academy</title>
+</head>
+<body data-theme="dark">
+  <div id="mobileShade" class="mobile-shade" hidden></div>
+  <div class="shell" id="shell">
+    <aside class="sidebar" id="sidebar" aria-label="Course navigation">
+      <div class="side-top">
+        <a href="#/dashboard" class="brand" aria-label="Cyber Course home"><span class="brand-logo" aria-hidden="true">C<span class="brand-dot">.</span></span><span class="brand-words">CYBER<span>COURSE</span><small>SECURITY ACADEMY</small></span></a>
+        
+      </div>
+      <div class="side-label">WORKSPACE</div>
+      <nav class="side-nav" id="sideNav">
+        <a href="#/dashboard" data-section="dashboard"><span class="nav-symbol">◫</span><span class="nav-label">Dashboard</span></a>
+        <a href="#/labs" data-section="labs"><span class="nav-symbol">⌘</span><span class="nav-label">Hands-on labs</span></a>
+        <a href="#/projects" data-section="projects"><span class="nav-symbol">⬡</span><span class="nav-label">Portfolio projects</span><span class="nav-mini">7</span></a>
+      </nav>
+      <div class="side-label course-label">COURSE WORK</div>
+      <nav class="side-nav course-work-nav" aria-label="Your learning tools">
+        <button type="button" id="coursesToggle" class="side-nav-button" aria-expanded="false" aria-controls="coursesPanel" title="Courses and Lessons" aria-label="Expand Courses and Lessons">
+          <span class="nav-symbol" aria-hidden="true">▤</span><span class="nav-label">Courses &amp; Lessons</span><span class="nav-disclosure" aria-hidden="true">⌄</span>
+        </button>
+        <a href="#/quizzes" data-section="quizzes" title="All assessments"><span class="nav-symbol">◇</span><span class="nav-label">All assessments</span><span class="nav-mini">36</span></a>
+        <a href="#/project/6" data-section="projects" title="MASS communications"><span class="nav-symbol">◈</span><span class="nav-label">MASS communications</span></a>
+      </nav>
+      <section id="coursesPanel" class="courses-panel" aria-label="Expandable course catalog" hidden>
+        <div class="course-map-head">
+          <div class="course-map-title"><span>NINE COURSES</span><a href="#/roadmap" title="View full roadmap">Roadmap ↗</a></div>
+          <label for="courseOutlineSearch" class="visually-hidden">Search your course outline</label>
+          <div class="outline-search-row"><span aria-hidden="true">⌕</span><input id="courseOutlineSearch" type="search" placeholder="Search course or lesson…" autocomplete="off"><button id="outlineClear" type="button" title="Clear course search" aria-label="Clear course search" hidden>×</button></div>
+          <div class="course-map-summary"><span id="courseOutlineCompleted">0 of 144 lessons</span><span>36 WEEKS</span></div>
+          <div class="course-map-progress"><div id="courseOutlineTrack"></div></div>
+        </div>
+        <div id="courseworkOutline" class="coursework-outline" aria-label="Courses, weeks and lessons"></div>
+      </section>
+      <div class="side-bottom">
+        <div class="weekly-target"><span class="weekly-icon">↗</span><div><b>20 hours / week</b><small>36 weeks · 720 planned hours</small></div></div>
+        <p>Build skills. Document proof.<br />Make the next move.</p>
+        <span class="build-id">GUIDED LAB BUILD 2026.11.07 · V2.2</span>
+      </div>
+      <div class="sidebar-resizer" id="sidebarResizer" role="separator" aria-label="Resize sidebar" aria-orientation="vertical" tabindex="0" title="Drag to resize sidebar"></div>
+    </aside>
+    <div class="workspace">
+      <header class="topbar">
+        <div class="top-left"><button id="menuButton" class="icon-btn menu-button" aria-label="Open navigation" title="Menu"><span class="hamburger"><i></i><i></i><i></i></span></button><span class="mobile-brand">CYBER<span>COURSE</span></span><span class="breadcrumb">LEARNING PLATFORM <span>/</span> <strong id="breadcrumbHere">Dashboard</strong></span></div>
+        <div class="top-actions"><span class="top-live"><i></i> LEARNING MODE</span><button id="topSearchButton" class="icon-btn" aria-label="Search courses" title="Search">⌕</button><button id="topThemeButton" class="icon-btn" aria-label="Change theme" title="Change theme">◐</button><div class="profile-wrap"><button class="profile-button learner-profile" id="profileButton" aria-label="Open your profile and development menu" aria-expanded="false" title="My profile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="8" r="3.6"/><path d="M4.5 20a7.5 7.5 0 0 1 15 0"/></svg></button><div id="profileMenu" class="profile-menu" hidden><div class="profile-header"><b id="profileDisplayName">Learner</b><small>Cyber Course student</small></div><div class="profile-group-label">YOUR DEVELOPMENT</div><button data-go="#/gradebook">▤ My development & grades</button><button data-go="#/certifications">✺ Certifications</button><button data-go="#/resources">▧ Study resources</button><div class="profile-group-label profile-group-separate">ACCOUNT & SETTINGS</div><button data-go="#/settings">⚙ Profile settings</button><button data-action="export">↧ Export progress</button><button data-action="import">↥ Import progress</button></div></div><div class="professor-wrap"><button class="professor-top-button" id="professorButton" aria-label="Open Professor Go in the header" title="Professor Go · audio tutor" aria-expanded="false"><span class="professor-portrait" aria-hidden="true">👨🏿‍🏫</span><span class="professor-online"></span></button><div class="professor-popover" id="professorPopover" hidden><div class="professor-pop-head"><span class="professor-mini">👨🏿‍🏫</span><div><b id="professorCurrentName">Professor Go</b><small id="professorCurrentField">Your audio tutor · lesson narration</small></div><button class="icon-btn" id="professorClose" aria-label="Close professor">×</button></div><p id="professorCurrentTopic" class="professor-topic">Open a lesson, then press Play to hear your professor.</p><label for="voiceChoice" class="form-label">Professor voice</label><select id="voiceChoice" class="voice-select"><option value="">System default voice</option></select><div class="voice-controls"><button id="voicePlay" class="btn small">▶ Play</button><button id="voicePause" class="btn small secondary">Ⅱ Pause</button><button id="voiceStop" class="btn small ghost">■ Stop</button></div><div class="voice-speed"><span>Speed</span><input type="range" id="voiceRate" min="0.7" max="1.55" step="0.05" value="1"/><span id="voiceRateLabel">1.00×</span></div><button id="voiceCopy" class="text-action">Copy narration script ↗</button><p class="voice-note">Narration uses available built-in voices on your device. Not a live AI conversation or a prerecorded video.</p></div></div></div>
+      </header>
+      <main id="mainContent" tabindex="-1"><div class="loading">Loading your academy…</div></main>
+      <footer class="app-footer"><span>CYBER COURSE © 2026 · Training environment</span><span>Privacy-first · Saved locally on this device</span></footer>
+    </div>
+  </div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <input id="importFile" type="file" accept=".json,application/json" hidden />
+  <script src="./data/curriculum.js"></script>
+  <script defer src="./lab-upgrade.js"></script>
+  <script defer src="./app.js"></script>
+</body>
+</html>

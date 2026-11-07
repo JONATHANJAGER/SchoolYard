@@ -1,0 +1,155 @@
+/* CYBER-COURSE 2.1 — faithful dark dashboard + video-inspired nested course menu.
+   Style overrides are isolated to keep all lesson, assessment and project logic intact. */
+:root{--side-width:282px;--bg:#0d1020;--sidebar:#14172a;--surface:#181b30;--surface2:#232640;--surface3:#2c2b4a;--line:#30334c;--lav:#a68bff;--muted:#9ea6c4;--ink:#f8f7ff}
+body[data-theme="dark"]{background:var(--bg)}
+.sidebar,.sidebar .side-top,body.sidebar-compact .sidebar,body.sidebar-compact .sidebar .side-top{background:#141629!important;color:#f7f5ff!important;border-color:#302f49!important}
+.sidebar{scrollbar-color:#454365 transparent;overscroll-behavior:contain}
+.sidebar .side-top{height:76px!important;min-height:76px;padding:14px 18px!important;border-bottom:1px solid #2d3049}
+.sidebar .brand-logo{height:39px;width:39px;border-radius:12px;background:linear-gradient(145deg,#8d69ee,#603bd2);box-shadow:0 8px 22px #533ecb35}
+.sidebar .brand-words{color:#f4f1ff}.sidebar .brand-words span{color:#aa91ff}.sidebar .brand-words small{color:#8d92b4}
+.sidebar .side-label{font-size:10px;color:#8288aa;margin:21px 18px 10px;letter-spacing:1.85px}
+.sidebar .course-label{color:#a7a0e4;margin-top:22px}
+.sidebar .side-nav{padding:0 10px;gap:4px}
+.sidebar .side-nav a,.sidebar .side-nav-button{color:#aab0ce!important;min-height:44px;background:transparent;border:1px solid transparent;border-radius:11px;font-size:12px;padding:10px 12px;gap:12px;font-weight:650;display:flex;align-items:center;white-space:nowrap;width:100%;text-align:left}
+.sidebar .side-nav a:hover,.sidebar .side-nav-button:hover{background:#262740!important;color:#f7f4ff!important}
+.sidebar .side-nav a.active,.sidebar .side-nav-button.active{background:linear-gradient(105deg,#3b315f,#292442)!important;color:#f0e9ff!important;border-color:#584b8b!important}
+.sidebar .side-nav a .nav-symbol,.sidebar .side-nav-button .nav-symbol{font-size:20px;min-width:23px;width:23px;color:#b7a9ec!important;font-weight:500}
+.sidebar .side-nav .nav-mini{color:#8f95ae;font-size:10px}
+.sidebar .side-nav-button .nav-label{flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sidebar .nav-disclosure{font-size:18px;color:#a9a5c5;transform:rotate(-90deg);transition:transform .18s}
+.sidebar .side-nav-button[aria-expanded="true"] .nav-disclosure{transform:rotate(0)}
+.sidebar .course-work-nav{padding-bottom:8px}
+.courses-panel{padding:5px 0 9px;margin:0 9px 8px;border:1px solid #373451;border-radius:14px;background:#18192f;overflow:visible}
+.courses-panel[hidden]{display:none!important}
+.sidebar .course-map-head{background:transparent;border-bottom:1px solid #38374e;margin:0 9px 10px;padding:10px 3px 14px}
+.sidebar .course-map-title>span{font-size:10px;color:#c8b9ff}
+.sidebar .course-map-title>a{color:#aa94ff}
+.sidebar .outline-search-row{background:#24253f;border:1px solid #403e5b;color:#bcb9d8}
+.sidebar .outline-search-row:focus-within{border-color:#9d82ee}
+.sidebar .outline-search-row>span{color:#ad9be2}
+.sidebar .outline-search-row input{color:#f9f7ff;background:transparent}
+.sidebar .outline-search-row input::placeholder{color:#8988a8}
+.sidebar .outline-search-row button{background:#40395c;color:#d8ceff}
+.sidebar .course-map-summary{color:#a4a8c2}
+.sidebar .course-map-summary>span:last-child{color:#aa91ff}
+.sidebar .course-map-progress,.sidebar .month-track{background:#35354b}
+.sidebar .coursework-outline{padding:0 5px 5px!important}
+.sidebar .outline-month{background:transparent;border-radius:10px;margin:2px 0 5px}
+.sidebar .outline-month[open]{background:#1e2036;border:1px solid #37334d}
+.sidebar .month-summary,.sidebar .week-summary{color:#c8c4dc!important}
+.sidebar .month-summary{padding:12px 6px;gap:7px;min-height:53px}
+.sidebar .month-summary:hover,.sidebar .week-summary:hover{background:#2d2b49!important}
+.sidebar .month-sequence{background:#3b335b;color:#cbb9ff}
+.sidebar .month-titles b{color:#f0effb!important;font-size:11px;line-height:1.4}
+.sidebar .month-titles small{color:#959bb5!important}
+.sidebar .month-counter{background:#264838;color:#a7f1d5}
+.sidebar .tree-caret{color:#a79bcf}
+.sidebar .outline-weeks{padding-left:5px}
+.sidebar .outline-week{margin-left:10px;border-left-color:#403d62}
+.sidebar .outline-week[open]{border-left-color:#a98cff}
+.sidebar .week-summary{padding:8px 5px}
+.sidebar .week-summary-txt b{color:#d8d5ee;font-size:10.6px}
+.sidebar .week-summary-txt small{color:#888fae}
+.sidebar .week-state{background:#36324e;color:#c7b5ff}
+.sidebar .week-state.finished{color:#b8f2d0;background:#225643}
+.sidebar .week-state.available{background:#443960;color:#cfbbff}
+.sidebar .week-state.unavailable{background:#302f44;color:#b5afd0}
+.sidebar .tree-lesson{color:#aaa9c3;padding:8px 5px;font-size:10.7px}
+.sidebar .tree-lesson:hover{background:#2c2948;color:#f4edff}
+.sidebar .tree-lesson.locked{color:#8b8ca8;opacity:.8}
+.sidebar .tree-lesson .tree-status{color:#ae9ede}
+.sidebar .tree-lesson.current{background:#423369;color:#f5ebff;box-shadow:inset 3px 0 #af93ff}
+.sidebar .tree-lesson.current .tree-status{color:#f0dcff}
+.sidebar .tree-lesson.tree-assessment{background:#29263d;color:#c4b6ff;border-color:#4c4269}
+.sidebar .tree-lesson.tree-assessment:hover{background:#383057}
+.sidebar .tree-lesson.tree-assessment.current{background:#493670;color:#f4edff;border-color:#8365c3}
+.sidebar .tree-lesson.tree-assessment.finished{background:#1c493b;color:#b6f1d0;border-color:#336d56}
+.sidebar .tree-grade,.sidebar .active-pin{color:#b5a2e8}
+.sidebar .side-bottom{padding:12px 0 4px;margin-top:auto}
+.sidebar .weekly-target{background:linear-gradient(110deg,#2d254b,#24293d);border-color:#453a62;color:#f2edff}
+.sidebar .weekly-target small,.sidebar .side-bottom p{color:#9197b5}
+.sidebar .build-id{color:#6e7494}
+/* Icon rail: no resize controls at top. Drag the edge left to minimize, right to expand. */
+body.sidebar-compact .sidebar{width:76px!important}
+body.sidebar-compact .sidebar .side-top{height:76px!important;min-height:76px;padding:12px 8px!important;justify-content:center;flex-direction:row}
+body.sidebar-compact .sidebar .side-top .brand{justify-content:center}
+body.sidebar-compact .sidebar .brand-logo{height:39px;width:39px}
+body.sidebar-compact .sidebar .side-label,body.sidebar-compact .sidebar .nav-label,body.sidebar-compact .sidebar .nav-disclosure,body.sidebar-compact .sidebar .nav-mini,body.sidebar-compact .sidebar .side-bottom,body.sidebar-compact .sidebar .brand-words,body.sidebar-compact .sidebar .courses-panel{display:none!important}
+body.sidebar-compact .sidebar .side-nav{padding:0 9px!important}
+body.sidebar-compact .sidebar .side-nav a,body.sidebar-compact .sidebar .side-nav-button{justify-content:center;min-height:45px;padding:6px!important}
+body.sidebar-compact .sidebar .side-nav .nav-symbol{margin:0;width:26px;font-size:22px}
+body.sidebar-compact .sidebar .course-work-nav{margin-top:12px}
+.sidebar-resizer{z-index:35;width:12px;left:calc(var(--side-width) - 6px);background:transparent}
+.sidebar-resizer:after{content:'';display:block;position:absolute;left:5px;top:36%;height:65px;width:2px;border-radius:2px;background:#6f5caa66;opacity:0;transition:opacity .15s}
+.sidebar-resizer:hover:after,.sidebar-resizer.dragging:after{opacity:1}
+.sidebar-resizer:hover,.sidebar-resizer.dragging{background:#a88df222}
+/* Header: smart hide on scroll down, reappear on scroll up */
+.topbar{height:68px;background:rgba(13,16,31,.96);backdrop-filter:blur(18px);border-bottom:1px solid #282b43;transition:transform .22s ease;will-change:transform}
+.topbar.header-hidden{transform:translateY(calc(-100% - 2px))}
+.topbar .professor-top-button{width:34px;height:34px;border-radius:50%;background:#322b52;border-color:#7861b6}
+.topbar .professor-portrait{font-size:18px}
+.mobile-brand{display:none;font-size:12px;color:#fff;font-weight:950;letter-spacing:1.2px;white-space:nowrap}
+.mobile-brand span{color:var(--lav)}
+/* Dashboard typography and rhythm matching the approved dark reference */
+body:not(.page-lesson):not(.page-quiz) #mainContent{padding-top:31px}
+.hero{grid-template-columns:minmax(0,1.65fr) minmax(265px,.70fr);gap:18px}
+.hero-main{background:radial-gradient(ellipse at 95% 100%,#b4666a43 0,transparent 36%),radial-gradient(ellipse at 85% 0%,#8d7cf14a 0,transparent 47%),linear-gradient(120deg,#2d2b4f,#181a32 72%);border-color:#49416b;border-radius:22px;min-height:300px}
+.hero h1 em{color:#ffafab}
+.hero-overview,.metric,.week-card,.panel,.resources-card{background:#191c31;border-color:#30334f}
+.hero-overview{border-radius:22px}
+.metrics{gap:14px}
+.section-heading a,.section-heading button{color:#b09afa}
+.week-card:hover{border-color:#7660aa}
+/* All interactive controls get useful touch-size targets. */
+.sidebar .side-nav button,.sidebar .side-nav a,.topbar button{touch-action:manipulation}
+/* Mobile: app-like dark dashboard, overlay nested course menu and compact header. */
+@media(max-width:790px){
+ .sidebar{width:min(340px,90vw)!important;box-shadow:14px 0 55px #08071a88}
+ .sidebar .side-top{height:72px!important;min-height:72px}
+ .sidebar .side-label,.sidebar .nav-label,.sidebar .nav-mini,.sidebar .brand-words{display:initial!important}
+ .sidebar .side-nav a,.sidebar .side-nav-button{justify-content:flex-start!important;padding:10px 12px!important}
+ .sidebar .nav-disclosure{display:inline-block}
+ .sidebar .courses-panel:not([hidden]){display:block!important}
+ .sidebar-resizer{display:none!important}
+ .topbar{height:62px;padding:0 14px}
+ .top-left{gap:7px;min-width:0}
+ .mobile-brand{display:inline}
+ .breadcrumb{display:none}
+ .top-actions{gap:3px}
+ .top-actions .icon-btn{width:33px;min-width:33px}
+ .topbar .profile-button,.topbar .professor-top-button{width:32px;height:32px}
+ body:not(.page-lesson):not(.page-quiz) #mainContent{padding:19px 15px 37px}
+ .hero{grid-template-columns:1fr;gap:12px}
+ .hero-main{min-height:260px;padding:26px 24px;border-radius:18px}
+ .hero-main h1{font-size:clamp(33px,8.3vw,48px);letter-spacing:-1.3px}
+ .hero-overview{border-radius:18px;grid-template-columns:135px minmax(0,1fr);gap:8px 12px;padding:18px}
+ .hero-overview>.ring{width:120px;height:120px;margin:auto;grid-row:1/4}
+ .hero-overview .ring-inside{width:95px;height:95px}
+ .hero-overview .ring-inside strong{font-size:29px}
+ .hero-overview h3{font-size:15px}
+ .hero-overview p{font-size:11px}
+ .metrics{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+ .metric{border-radius:14px;min-height:115px}
+ .course-grid{grid-template-columns:1fr;gap:12px}
+ .week-card{min-height:186px;border-radius:15px}
+ .section-heading{gap:9px}
+ .month-strip{grid-template-columns:repeat(9,minmax(0,1fr));overflow-x:auto}
+ .month-block{min-width:30px}
+ .app-footer{gap:7px}
+}
+@media(max-width:400px){
+ .mobile-brand{font-size:10px;letter-spacing:.7px}
+ .topbar .top-actions{gap:1px}
+ .topbar .profile-button,.topbar .professor-top-button{width:30px;height:30px}
+ .hero-main{padding:25px 20px}
+ .hero-overview{grid-template-columns:110px minmax(0,1fr);padding:15px}
+ .hero-overview>.ring{width:96px;height:96px}
+ .hero-overview .ring-inside{width:75px;height:75px}
+ .hero-overview .ring-inside strong{font-size:23px}
+}
+@media(prefers-reduced-motion:reduce){.topbar{transition:none}}
+/* Mobile menu glyph — preserve a visible tap target in the compact header. */
+.menu-button .hamburger{display:flex;flex-direction:column;justify-content:center;gap:4px;width:20px;height:20px}
+.menu-button .hamburger i{display:block;width:18px;height:2px;border-radius:2px;background:#d6ceff;flex-shrink:0}
+.menu-button:hover .hamburger i{background:#fff}
+@media(max-width:790px){.menu-button{display:grid!important;place-items:center;min-width:36px!important;width:36px;height:36px;padding:0;margin-left:-4px}.menu-button .hamburger i{width:18px}}
