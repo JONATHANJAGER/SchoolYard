@@ -1,5 +1,7 @@
 # SchoolYard — Professor David modular development preview
 
+See [Delivery plan and acceptance checklist](DELIVERY-PLAN.md) for the six development phases, all seven required deliverables, proposed integration changes, service cost drivers, and iPhone/MacBook/Windows testing gates. Existing-file changes require review before implementation; production deployment requires explicit owner approval.
+
 ## Status
 
 This is a **development foundation**, not a completed production voice classroom. All additions are inside `modules/`. Existing site, curriculum, Firebase configuration, grades and student records are unchanged. Nothing is deployed. The modules deliberately fail closed where reliable academic evidence, exam selection, production services or permission is missing.
