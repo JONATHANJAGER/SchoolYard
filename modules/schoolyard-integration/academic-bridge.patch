@@ -1,0 +1,31 @@
+--- a/app.js
++++ b/app.js
+@@ -30,7 +30,27 @@
+    legacyNotice='Previous course history was archived under Settings / Export; new-course grades begin fresh.';}
+ }
+ let searchTerm='',monthFilter='all',focusFilter='all',projectFilter='all',quizFilter='all',sidebarDragging=false,audioChunks=[],audioIndex=0,speaking=false,paused=false,activeNarration='';
+-function save(){state.updatedAt=new Date().toISOString();try{localStorage.setItem(STORAGE,JSON.stringify(state))}catch(e){toast('Browser storage unavailable: export your progress to back it up.')}}
++function save(){state.updatedAt=new Date().toISOString();try{localStorage.setItem(STORAGE,JSON.stringify(state));window.dispatchEvent(new CustomEvent('cybercourse:progress-saved'))}catch(e){toast('Browser storage unavailable: export your progress to back it up.')}}
++
++// Optional David adapter: preserve legacy state structure and grading rules.
++window.CYBER_COURSE_PROGRESS_BRIDGE = {
++  get: () => structuredClone(state),
++  recordCheck(w,d,i) {
++    const q=course.weeks[w-1]?.lessons[d]?.knowledgeChecks[i];
++    if(!q || !isUnlocked(w,d))throw Error('Lesson is locked or missing');
++    const key=`${w}-${d}`;state.miniPassed[key]??={};state.miniPassed[key][i]=true;save();
++  },
++  recordQuiz(w,answers) {
++    const unit=course.weeks[w-1];
++    if(!unit || ![0,1,2].every(d=>done(w,d)))throw Error('Assessment prerequisites incomplete');
++    if(answers.length!==5 || answers.some((a,i)=>!Number.isInteger(a)||a<0||a>=unit.quiz[i].choices.length))throw Error('Five valid answers required');
++    const correct=answers.filter((a,i)=>a===unit.quiz[i].correct).length,pct=correct*20;
++    state.quizScores[w]=Math.max(score(w),pct);state.quizAttempts[w]=(Number(state.quizAttempts[w])||0)+1;
++    state.quizHistory[w]??=[];state.quizHistory[w].push({correct,percentage:pct,answers:[...answers]});
++    state.quizHistory[w]=state.quizHistory[w].slice(-30);if(pct>=80)delete state.skippedAssessments[w];save();
++  }
++};
++
+ function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+ function toast(msg){const t=document.querySelector('#toast');t.textContent=msg;t.classList.add('show');clearTimeout(toast.timer);toast.timer=setTimeout(()=>t.classList.remove('show'),4500)}
+ function done(w,d){return state.completed.includes(`${w}-${d}`)}
