@@ -1,0 +1,24 @@
+// Merge these matches inside /databases/{database}/documents. Do not replace existing rules.
+// Audit any broad wildcard allow rules: Firestore grants access when ANY match allows it.
+match /users/{uid}/davidAcademic/{recordId} {
+  allow read, delete: if request.auth != null && request.auth.uid == uid;
+  allow create, update: if request.auth != null && request.auth.uid == uid
+    && request.resource.data.type in ['position','bookmark','lab-queue','knowledge-check','weekly-quiz','correction-review','preferences']
+    && request.resource.data.updatedAt == request.time;
+}
+match /users/{uid}/davidConversations/{recordId} {
+  allow read, delete: if request.auth != null && request.auth.uid == uid;
+  allow create: if request.auth != null && request.auth.uid == uid
+    && request.resource.data.keys().hasOnly(['role','text','lessonId','createdAt','updatedAt'])
+    && request.resource.data.role in ['student','david']
+    && request.resource.data.text is string
+    && request.resource.data.text.size() <= 12000
+    && request.resource.data.updatedAt == request.time;
+  allow update: if false;
+}
+// Exam evidence, readiness, practice scores and lab verification must be written by
+// a trusted authenticated assessment service (Admin SDK), never client self-attestation.
+match /users/{uid}/davidVerified/{recordId} {
+  allow read: if request.auth != null && request.auth.uid == uid;
+  allow write: if false;
+}
